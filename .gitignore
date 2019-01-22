@@ -1,7 +1,9 @@
 #自定义的不上传的文件
 *.sql
 *.db
-
+*.idea
+*.pyc
+__pyche__
 
 
 # Byte-compiled / optimized / DLL files
