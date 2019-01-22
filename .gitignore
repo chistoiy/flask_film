@@ -1,3 +1,9 @@
+#自定义的不上传的文件
+*.sql
+*.db
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
