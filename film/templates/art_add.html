@@ -1,0 +1,61 @@
+{% extends 'art_base.html' %}
+{% block content %}
+<div class="col-md-9">
+                <div class="card">
+                     <div class="card-header">{{ title }}</div>
+                     <div class="card-body">
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>标题</label>
+       {{ form.title }}
+         {%   for error in form.title.errors %}
+                        <p style="color:red">{{ error }}  </p>
+                        {%   endfor %}
+    </div>
+    <div class="form-group">
+        <label>分类</label>
+        {{ form.category }}
+         {%   for error in form.category.errors %}
+                        <p style="color:red">{{ error }}  </p>
+                        {%   endfor %}
+    </div>
+    <div class="form-group">
+        <label>封面</label>
+         {{ form.logo }}
+        {%   for error in form.logo.errors %}
+                        <p style="color:red">{{ error }}  </p>
+                        {%   endfor %}
+        <img data-src="holder.js/300x160" style="margin-top: 6px;">
+        <a class="btn btn-primary" style="margin-top: 6px;">上传封面</a>
+    </div>
+    <div class="form-group">
+         <label>内容</label>
+         {{ form.content }}
+        {%   for error in form.content.errors %}<p style="color:red">{{ error }}  </p>
+            {%   endfor %}
+    </div>
+
+{{ form.csrf_token }}
+     {{ form.submit }}
+</form>
+                     </div>
+                </div>
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block css %}
+<script src="{{ url_for('static',filename='ue/ueditor.config.js') }}"></script>
+<script src="{{ url_for('static',filename='ue/ueditor.all.js') }}"></script>
+<script src="{{ url_for('static',filename='ue/lang/zh-cn/zh-cn.js') }}"></script>
+
+{% endblock %}
+
+{% block sc %}
+var ue = UE.getEditor("content", {
+        serverUrl: "/upload/"
+    });
+{% endblock %}

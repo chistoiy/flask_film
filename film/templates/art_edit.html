@@ -1,0 +1,43 @@
+{% extends 'art_base.html' %}
+{% block content %}
+        <div class="col-md-9">
+                <div class="card">
+                <div class="card-header">文章列表</div>
+                 <div class="card-body">
+                     <form method="post" enctype="multipart/form-data">
+                     <table class="table table-bordered">
+
+                             标题
+                             <input type="hidden" name="id" value="{{ article.id }}">
+
+
+
+                         {{ form.title(value=article.title)  }}
+                         {{ form.logo }}
+<img src="/static/uploads/{{ article.logo }}" style="margin-top:6px;width:300px;height:180px">
+                         {{   form.content(value=article.content) }}
+                        {{ form.csrf_token }}
+                            {{ form.submit }}
+
+                     </form>
+                 </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block css %}
+<script src="{{ url_for('static',filename='ue/ueditor.config.js') }}"></script>
+<script src="{{ url_for('static',filename='ue/ueditor.all.js') }}"></script>
+<script src="{{ url_for('static',filename='ue/lang/zh-cn/zh-cn.js') }}"></script>
+
+{% endblock %}
+
+{% block sc %}
+var ue = UE.getEditor("content", {
+        serverUrl: "/upload/"
+    });
+{% endblock %}

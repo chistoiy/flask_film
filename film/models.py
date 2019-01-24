@@ -40,6 +40,7 @@ from film import db
 # 会员数据模型
 class User(db.Model):
     __tablename__ = "user"
+    #__bind_key__ = 'movie'
     __table_args__ = {"useexisting": True}
     id = db.Column(db.Integer, primary_key=True)  # 编号
     name = db.Column(db.String(100), unique=True)  # 昵称
